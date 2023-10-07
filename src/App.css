@@ -2,37 +2,44 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.commit {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  column-gap: 2rem;
+  border-bottom: 1px solid black;
 }
 
-.App-link {
-  color: #61dafb;
+.commit *:nth-child(2) {
+  flex: 3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.commit * {
+  border-left: 1px solid black;
+  flex: 1;
+}
+
+.commit p {
+  margin: 0;
+  padding: 4px;
+}
+
+.commit:hover {
+  box-shadow: 4px 4px 4px grey;
+}
+
+.commits {
+  margin: auto;
+  max-height: 80vh;
+  max-width: 60vw;
+  overflow-y: scroll;
+}
+
+.commitsHeader {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5rem;
+}
+
+.commitsHeader * {
+  flex: 1;
 }
