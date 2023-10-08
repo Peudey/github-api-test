@@ -21,9 +21,20 @@ const RepoDisplay = (props) => {
             }
         });
 
-        let json = await res.json();
-        setRepos(json);
-        console.log(json);
+        let repoList = await res.json();
+        let repos = [];
+        await Promise.all(repoList.map(async (repoEntry) => {
+            res = await fetch(`https://api.github.com/repos/${user}/${repo}/commits/${repoEntry.sha}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${process.env.REACT_APP_GITHUB_API_KEY}`
+                }
+            })
+            let repoJson = await res.json();
+            repos.push(repoJson);
+        }))
+
+        setRepos(repos);
     }
 
     // Grabs list of collaborators to save from sorting through commit authors.
@@ -54,6 +65,11 @@ const RepoDisplay = (props) => {
                 <p>{repo.author?repo.author.login:"unknown"}</p>
                 <a href={repo.html_url} target="_blank">{repo.commit.message}</a>
                 <p>{new Date(Date.parse(repo.commit.author.date)).toLocaleDateString()}</p>
+                <div>
+                    <p>Total: {repo.stats.total}</p>
+                    <p>Added: {repo.stats.additions}</p>
+                    <p>Removed: {repo.stats.deletions}</p>
+                </div>
             </div>
             )
         }
@@ -70,6 +86,7 @@ const RepoDisplay = (props) => {
                 <p>User</p>
                 <p>Commit Message</p>
                 <p>Date</p>
+                <p>Changes</p>
             </div>
                 {repoFormat}
             </div>
