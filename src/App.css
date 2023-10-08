@@ -4,6 +4,7 @@
 
 .commit {
   display: flex;
+  align-items: center;
   flex-direction: row;
   column-gap: 2rem;
   border-bottom: 1px solid black;
@@ -14,9 +15,10 @@
 }
 
 .commit * {
-  border-left: 1px solid black;
+  height: 100%;
   flex: 1;
 }
+
 
 .commit p {
   margin: 0;
@@ -25,10 +27,6 @@
 
 .commit:hover {
   box-shadow: 4px 4px 4px grey;
-}
-
-.commit:nth-child(2) {
-  margin-top: 3.4rem;
 }
 
 .commits {
@@ -41,14 +39,19 @@
 
 .commitsHeader {
   display: flex;
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: inherit;
   flex-direction: row;
-  column-gap: 5rem;
+  column-gap: 2rem;
   background-color: white;
   border-bottom: 1px solid black;
 }
 
 .commitsHeader * {
   flex: 1;
+}
+
+.commitsHeader *:nth-child(2) {
+  flex: 3;
 }
