@@ -38,7 +38,6 @@ const RepoDisplay = (props) => {
 
         if(res.ok) {
             let json = await res.json();
-            console.log(json);
             let userList = json.map(user => user.login);
             setUsers(userList);
         } else {
@@ -46,7 +45,6 @@ const RepoDisplay = (props) => {
         }
     }
 
-    console.log(repos);
     let repoFormat = repos
     .filter(repo => userFilter==="all"||repo.author.login.toLowerCase() === userFilter)
     .map((repo) => {
@@ -54,7 +52,7 @@ const RepoDisplay = (props) => {
             return(
             <div key={repo.sha} className="commit">
                 <p>{repo.author?repo.author.login:"unknown"}</p>
-                <p>{repo.commit.message}</p>
+                <a href={repo.html_url} target="_blank">{repo.commit.message}</a>
                 <p>{new Date(Date.parse(repo.commit.author.date)).toLocaleDateString()}</p>
             </div>
             )
