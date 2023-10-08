@@ -67,9 +67,9 @@ const RepoDisplay = (props) => {
             </select>
             <div className="commits">
             <div className="commitsHeader">
-                <p>user</p>
-                <p>commit message</p>
-                <p>date</p>
+                <p>User</p>
+                <p>Commit Message</p>
+                <p>Date</p>
             </div>
                 {repoFormat}
             </div>
