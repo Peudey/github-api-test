@@ -76,7 +76,7 @@ const RepoDisplay = (props) => {
     });
 
     return (
-        <div>
+        <div className="repoContainer">
             <select onChange={e => {setUserFilter(e.target.value);console.log(userFilter)}}>
                 <option value="all">Show All</option>
                 {users.map(user=><option value={user.toLowerCase()}>{user}</option>)}
