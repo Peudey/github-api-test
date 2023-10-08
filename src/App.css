@@ -1,10 +1,18 @@
 .App {
+  display: flex;
+  align-items: center;
+  height: 100vh;
   text-align: center;
+  background-color:aliceblue;
 }
 
 .repoContainer {
+  background-color: white;
   margin: auto;
   width: 70vw;
+  padding: 12px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, .2);
 }
 
 .commit {
@@ -13,6 +21,10 @@
   flex-direction: row;
   column-gap: 2rem;
   border-bottom: 1px solid black;
+}
+
+.commit:last-child {
+  border: none;
 }
 
 .commit *:nth-child(2) {
@@ -31,7 +43,7 @@
 }
 
 .commit:hover {
-  box-shadow: 4px 4px 4px grey;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, .2);
 }
 
 .commits {
@@ -53,10 +65,40 @@
   border-bottom: 1px solid black;
 }
 
+select {
+  font-size: 1rem;
+  padding: 0 24px;
+}
+
 .commitsHeader * {
   flex: 1;
 }
 
 .commitsHeader *:nth-child(2) {
   flex: 3;
+}
+
+div::-webkit-scrollbar {
+	width: 9px;
+	height: 9px;
+}
+
+div::-webkit-scrollbar-track {
+	background: #e7e9eb;
+}
+
+div::-webkit-scrollbar-thumb {
+	background: #ccc;
+}
+
+div::-webkit-scrollbar-thumb:window-inactive {
+	background: #ddd;
+}
+
+div::-webkit-scrollbar-thumb:hover {
+	background: #aaa;
+}
+
+div::-webkit-scrollbar-thumb:active {
+	background: #888;
 }

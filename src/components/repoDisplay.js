@@ -77,10 +77,6 @@ const RepoDisplay = (props) => {
 
     return (
         <div className="repoContainer">
-            <select onChange={e => {setUserFilter(e.target.value);console.log(userFilter)}}>
-                <option value="all">Show All</option>
-                {users.map(user=><option value={user.toLowerCase()}>{user}</option>)}
-            </select>
             <div className="commits">
             <div className="commitsHeader">
                 <p>User</p>
@@ -90,6 +86,10 @@ const RepoDisplay = (props) => {
             </div>
                 {repoFormat}
             </div>
+            <select onChange={e => {setUserFilter(e.target.value);console.log(userFilter)}}>
+                <option value="all">Show All</option>
+                {users.map(user=><option value={user.toLowerCase()}>{user}</option>)}
+            </select>
         </div>
     )
 }
