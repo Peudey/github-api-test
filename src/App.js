@@ -5,7 +5,7 @@ import RepoDisplay from './components/repoDisplay';
 function App() {
   return (
     <div className="App">
-      <RepoDisplay />
+      <RepoDisplay user="bmeddeb" repo="SER401-Team3"/>
     </div>
   );
 }

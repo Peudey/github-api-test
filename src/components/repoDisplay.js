@@ -1,17 +1,20 @@
 import React, {useEffect, useState} from "react";
 
-const RepoDisplay = () => {
+const RepoDisplay = (props) => {
     const[repos, setRepos] = useState([]);
     const[userFilter, setUserFilter] = useState("all");
     const[users, setUsers] = useState([]);
+
+    let {user, repo} = props;
 
     useEffect(() => {
         getCommits();
         getCollaborators();
     }, []);
     
+    // Fetches all commits for a repo
     async function getCommits() {
-        let res = await fetch(`https://api.github.com/repos/bmeddeb/SER401-Team3/commits`, {
+        let res = await fetch(`https://api.github.com/repos/${user}/${repo}/commits`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_GITHUB_API_KEY}`
@@ -23,8 +26,10 @@ const RepoDisplay = () => {
         console.log(json);
     }
 
+    // Grabs list of collaborators to save from sorting through commit authors.
+    // Can create a blacklist of faculty
     async function getCollaborators() {
-        let res = await fetch(`https://api.github.com/repos/bmeddeb/SER401-Team3/collaborators`, {
+        let res = await fetch(`https://api.github.com/repos/${user}/${repo}/collaborators`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_GITHUB_API_KEY}`
